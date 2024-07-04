@@ -1,14 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@font-face {
+    font-family: 'SF Pro';
+    src: url("./SF-Pro-Display-Light.otf") format("opentype");
+}
 
 html {
     height: 100%
 }
 * {
     color: #fff;
-    font-family: 'Montserrat';
+    font-family: 'Nunito';
+    font-family: 'SF Pro';
+    /* letter-spacing: 1px; */
+
     scrollbar-color: #999 #000;
     scroll-behavior: smooth;
     scrollbar-width: thin;
+
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 
@@ -49,23 +58,28 @@ h1, h2, h3, h4, h5, h6, p {
 
 button {
     color: #fff;
-    background: rgba(255,255,255,.2);
+    /* background: rgba(0,0,0,.3); */
+    background: rgba(0,0,0,0);
     border: 0;
-    padding: 10px 15px;
+    padding: 8px 16px;
     border-radius: 100px;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background .2s, transform .2s;
+    transition: background .3s, transform .3s;
 } button > svg {
     margin-right: 10px;
+} button > span {
+    font-family: 'Nunito';
+    letter-spacing: 0px;
 }
 button:hover {
-    background: rgba(255,255,255,.3);
+    transition: background .1s, transform .2s;
+    background: rgba(255,255,255,.1);
 } button:active {
-    transform: scale(.94);
+    transform: scale(.98);
 }
 
 code {
@@ -145,7 +159,7 @@ input[type=checkbox]:checked:after {
 aside {
     width: 100%;
     display: flex;
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.45);
 }
 
 aside > .side {
@@ -166,6 +180,8 @@ aside > .side > span {
     font-size: 12px;
     opacity: .9;
     text-align: center;
+    font-family: 'Nunito';
+    /* letter-spacing: 1px; */
 }
 aside > .side > svg {
     padding: 3px 4px;
@@ -201,19 +217,51 @@ main.default {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-main.default > h1 {
-    font-family: 'Shantell Sans';
-    font-weight: normal;
-    font-size: 70px;
-    margin-bottom: 30px;
-} main.default > h3 {
-    margin: 0 0 20px;
-    font-weight: normal;
-    text-align: center;
-    width: min(80%, 500px);
+} 
+main.default > div {
+    /* border: solid 1px #f00; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* animation: hide_d 1s cubic-bezier(.99,-0.02,.54,.74) reverse; */
+}   
+main.default > .center {
+    height: 100%;
+    justify-content: center;
 }
 
+main.default > .center > h1 {
+    font-family: 'Nunito';
+    font-size: 70px;
+    margin-bottom: 30px;
+    padding: 5px 25px;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+} main.default > .center > h2 {
+    font-family: 'Nunito';
+    position: absolute;
+    transform: translateY(45px) translateX(30px) rotate(-3deg);
+    text-align: center;
+    background: rgba(255,255,255,.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+main.default > .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} main.default > .bottom > span {
+    font-family: 'Nunito';
+    margin: 0 10px 3px;
+} main.default > .bottom > * {
+    opacity: .3;
+    animation: bounce 5s infinite ease-in-out;
+}
 
 /* SEARCHER */
 
@@ -263,29 +311,37 @@ main.default > h1 {
     display: flex;
     flex-direction: column;
     background: rgba(0,0,0,.3);
-    padding: 10px 10px 0px;
+    padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
     transition: background .5s, transform .3s;
 } .recipe_mini > h2 {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
 } .recipe_mini > .info {
-    margin-top: 4px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-} .recipe_mini > .info > span {
+} 
+
+.recipe_mini > .info > span > span > span {
+    padding: 1px 10px;
+}
+.recipe_mini > .info span {
+    font-family: 'Nunito';
+    letter-spacing: 0px;
     text-wrap: nowrap;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    opacity: .9;
-    background: rgba(255,255,255,.12);
-    padding: 3px 6px;
-    border-radius: 3px;
-} .recipe_mini:hover {
-    background: rgba(255,255,255,.08);
+    margin-right: 7px;
+    background: rgba(255,255,255,.09);
+    margin-left: 0;
+    padding: 1px 10px;
+    padding-left: 0;
+    border-radius: 300px;
+} 
+
+.recipe_mini:hover {
+    background: rgba(255,255,255,.055);
     transition: background .15s, transform .3s;
 } .recipe_mini:active {
     transform: scale(.97);
@@ -305,6 +361,7 @@ main.default > h1 {
     opacity: .85;
     font-size: 18px;
     width: fit-content;
+    padding-right: 60px;
 } .recipe > .back > span {
     margin-left: 10px;
     margin-bottom: .5px;
@@ -317,15 +374,21 @@ main.default > h1 {
 .recipe > .collections {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 0;
-} .recipe > .collections > span {
+    margin: 8px 0 10px;
+} .recipe > .collections > span > span > span {
+    padding: 1px 10px;
+}
+.recipe > .collections span {
     text-wrap: nowrap;
     margin-right: 7px;
-    margin-bottom: 7px;
-    opacity: .9;
-    background: rgba(255,255,255,.12);
-    padding: 3px 6px;
-    border-radius: 3px;
+    font-family: 'Nunito';
+    letter-spacing: 0px;
+    /* opacity: .9; */
+    background: rgba(255,255,255,.09);
+    margin-left: 0;
+    padding: 1px 10px;
+    padding-left: 0;
+    border-radius: 300px;
 }
 
 .recipe > .info {
@@ -348,21 +411,50 @@ main.default > h1 {
     margin-bottom: 7px;
     border-radius: 14px;
 } .recipe > .info > div > .list > div > .name {
+    font-family: 'Nunito';
+    letter-spacing: 0px;
     padding: 4px 10px;
     background: rgba(255,255,255,.1);
     border-radius: 14px;
+    font-size: 15px;
 } .recipe > .info > div > .list > div > .amount {
+    font-family: 'Nunito';
+    letter-spacing: 0px;
     padding: 4px 10px;
     text-wrap: nowrap;
+    font-size: 15px;
 }
 
 .recipe > .buttons {
     display: flex;
-    flex-wrap: wrap;
-} .recipe > .buttons > button {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    gap: 3px;
+    border-radius: 100px;
+    justify-content: space-between;
+} .recipe > .buttons > .mini {
+    display: flex;
+    background: rgba(0,0,0,.3);
+    border-radius: 20px;
+    margin-left: 10px;
+    
+}  .recipe > .buttons > .mini > button {
+    padding: 8px 9px;
+
+}
+
+.recipe > .buttons > .mini > button > svg {
+    padding: 0;
+    margin: 0;
+}
+
+.recipe > .buttons > button {
+    border-radius: 20px;
+    width: 204px;
+    justify-content: start;
+    text-align: left;
+    background: rgba(0,0,0,.3);
+
+} .recipe > .buttons > button:hover {
+    background: rgba(255,255,255,.1);
 }
 
 
@@ -423,6 +515,26 @@ main.default > h1 {
         transform: translateX(30px);
     }
 }
+@keyframes hide_d {
+    0% {
+        opacity: 1;
+    } 70% {
+        opacity: 0;
+    } 
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+        /* transform: translateY(30px); */
+    }
+}
+@keyframes bounce {
+    50% {
+        transform: translateY(5px);
+    } 100% {
+        transform: translateY(0px);
+    }
+}
+
 
 @keyframes spin {
     100% {
