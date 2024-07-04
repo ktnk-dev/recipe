@@ -321,6 +321,7 @@ const app = {
     },
     back: async () => {
         if (!current_page_handler) {
+            await main.clear(animations.to_right_side)
             await main.render(await app.default(), animations.from_top)
         } else {
             await main.clear(animations.to_right_side)
