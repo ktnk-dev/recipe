@@ -38,7 +38,11 @@ async function init() {
     collections.exclude = storage.exclude
 }
 async function renderMenu(menu_name, target) {
-    while (rendering_active) {await sleep(25)}
+    if (rendering_active) {
+        await sleep(450)
+        if (rendering_active) return
+    }
+
     rendering_active = true
     if (target == document.querySelector('aside > .side.active')) {return}
     try{document.querySelector('aside > .side.active').classList.remove('active')}catch{}
@@ -56,6 +60,7 @@ async function renderMenu(menu_name, target) {
     current_page_handler = pages[menu_name]
     await main.render(await pages[menu_name](), direction)
     rendering_active = false
+    return
 }
 
 const source_code = 'https://github.com/ktnk-dev/recipe'
