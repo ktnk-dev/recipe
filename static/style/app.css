@@ -1,0 +1,137 @@
+/* DEFAULT MAIN */
+main.default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+main.default > div {
+    /* border: solid 1px #f00; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* animation: hide_d 1s cubic-bezier(.99,-0.02,.54,.74) reverse; */
+}   
+main.default > .center {
+    height: 100%;
+    justify-content: center;
+}
+
+main.default > .center > h1 {
+    font-family: 'Nunito';
+    font-size: 70px;
+    margin-bottom: 30px;
+    padding: 5px 25px;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+} main.default > .center > h2 {
+    font-family: 'Nunito';
+    position: absolute;
+    transform: translateY(45px) translateX(30px) rotate(-3deg);
+    text-align: center;
+    background: rgba(255,255,255,.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+main.default > .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} main.default > .bottom > span {
+    font-family: 'Nunito';
+    margin: 0 10px 3px;
+    text-align: center;
+} main.default > .bottom > * {
+    opacity: .3;
+    animation: bounce 5s infinite ease-in-out;
+}
+
+/* SEARCHER */
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.search > input {
+    width: 100%;
+    background: rgba(255,255,255,.06);
+    border: 0;
+    border-radius: 100px 0 0 100px ;
+    padding: 10px 15px;
+    font-size: 17px;
+} .search > input::placeholder {
+    color: #bbb;
+}
+.search > .sb {
+    align-items: center;
+    display: flex;
+    padding: 10px 13px;
+    font-size: 17px;
+    background: rgba(255,255,255,.06);
+    border-radius: 0 100px 100px 0;
+    cursor: pointer;
+    transition: background .2s;
+} .search > .sb > svg {
+    margin-left: 10px;
+} .search > .sb:hover {
+    background: rgba(255,255,255,.19);
+} .search > .sb:active {
+    transition: background .0s;
+    background: rgba(255,255,255,.29);
+}
+.results {
+    display: flex;
+    flex-direction: column;
+} .results > h1 {
+    margin: 20px 0 15px;
+}
+
+
+
+
+
+/* SETTINGS */
+.setting {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+} .setting > .title {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+} .setting > .title > span {
+    margin-top: 5px;
+    opacity: .9;
+}
+
+.setting > .edit {
+    display: flex;
+    flex-direction: column;
+} 
+.setting > .checkboxes > label {
+    margin-bottom: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    border-radius: 400px;
+    transition: background .2s;
+
+} .setting > .checkboxes > label > span {
+    margin-left: 26px;
+    margin-bottom: 1px;
+} .setting > .checkboxes > label:hover {
+    background: rgba(255,255,255,.06);
+
+} .setting > .checkboxes > label:active {
+    background: rgba(255,255,255,.08);
+    transition: background .05s;
+
+
+}
