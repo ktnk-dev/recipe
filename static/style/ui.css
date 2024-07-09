@@ -7,33 +7,76 @@
     src: url('/static/font/Nunito-Regular.ttf');
 }
 
+:root {
+    --text: #fff;
+    --text-inverse: #000;
+    --search-placeholder: #aaa;
+    --body: transparent;
 
-html {
-    height: 100%
+    --bg-full: transparent;
+    --bg-main: transparent;
+    --bg-light: transparent;
+    --bg-opacity: transparent;
+    --inverse-full: transparent;
+    --inverse-main: transparent;
+    --inverse-light: transparent;
+    --inverse-opacity: transparent;
 }
+
+
+
 * {
-    color: #fff;
+    color: var(--text);
     font-family: 'SF Pro';
 
-    /* letter-spacing: 1px; */
-
-    scrollbar-color: #999 #000;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
+    /* LEGACY SCROLLBAR */
+    /* scrollbar-color: #999 #000; */
+    /* scroll-behavior: smooth; */
+    /* scrollbar-width: thin; */
 
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 
 } 
-body {
+
+svg {
+    fill: var(--text) !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+} ::-webkit-scrollbar-track {
+    /* MAIN SCROLLBAR BACKGROUND */
+    background: var(--bg-main);
+    border-radius: 100px;
+    margin: 20px 0;
+} ::-webkit-scrollbar-thumb {
+    /* ACRTUAL SCROLLBAR */
+    background: var(--inverse-light);
+    border-radius: 100px;
+    cursor: pointer;    
+} ::-webkit-scrollbar-thumb:hover {
+    background: var(--inverse-full);
+
+}
+
+/* MAIN UI */
+html {
+    height: 100%;
+} body {
+    transition: opacity .2s;
     margin: 0;
-    /* background: linear-gradient(210deg, #110014, #370047) #000; */
-    background: linear-gradient(210deg, #140000, #470000) #000;
-    /* height: calc(100vh - 60px);  */ 
+    opacity: 0;
+    background: var(--body);
+
     height: 100vh;
     height: 100dvh;
     max-height: 100vh;
+    
     width: 100vw;
+    
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -41,8 +84,9 @@ body {
 main {
     height: 100%;
     max-height: 100%;
-    /* min-height: 100%; */
+
     padding: 20px;
+
     overflow: auto;
     overflow-x: hidden;
 
@@ -60,8 +104,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 button {
-    color: #fff;
-    /* background: rgba(0,0,0,.3); */
+    color: var(--text);
     background: rgba(0,0,0,0);
     border: 0;
     padding: 8px 16px;
@@ -79,8 +122,8 @@ button {
     letter-spacing: 0px;
 }
 button:hover {
-    transition: background .1s, transform .2s;
-    background: rgba(255,255,255,.1);
+    transition: background .15s, transform .2s;
+    background: var(--inverse-light);
 } button:active {
     transform: scale(.98);
 }
@@ -89,7 +132,7 @@ code {
     font-family: monospace;
     font-size: 15px;
     margin: 0 2px;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     padding: 2px 5px;
     border-radius: 4px;
 }
@@ -107,7 +150,7 @@ input[type=checkbox]:before {
     position: absolute;
     padding: 10px;
     background-color: transparent;
-    border: solid 2px #fff;
+    border: solid 2px var(--text);
     border-radius: 400px;
 }
 input[type=checkbox]:checked:before {
@@ -116,7 +159,7 @@ input[type=checkbox]:checked:before {
     position: absolute;
     top: 0;
     left: 0;
-    background-color:#fff;
+    background-color: var(--text);
 }
 input[type=checkbox]:checked:after {
     content: "";
@@ -125,7 +168,7 @@ input[type=checkbox]:checked:after {
     height: 10px;
     top: 5px;
     left: 8px;
-    border: solid black;
+    border: solid var(--text-inverse);
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -137,7 +180,7 @@ input[type=checkbox]:checked:after {
 .load {
     z-index: 10;
     position: fixed;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -151,7 +194,7 @@ input[type=checkbox]:checked:after {
     height: 45px;
     width: 45px;
     animation: spin infinite linear 1s;
-    border: solid 5px #fff;
+    border: solid 5px var(--text);
     border-top: solid 5px transparent;
     border-radius: 1000px;
     opacity: 1;
@@ -162,7 +205,7 @@ input[type=checkbox]:checked:after {
 aside {
     width: 100%;
     display: flex;
-    background: rgba(0,0,0,.45);
+    background: var(--bg-full);
 }
 
 aside > .side {
@@ -175,7 +218,7 @@ aside > .side {
     opacity: .7;
     transition: all .3s;
 } aside > .side:hover {
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     opacity: 1;
 } 
 aside > .side > span {
@@ -184,19 +227,17 @@ aside > .side > span {
     opacity: .9;
     text-align: center;
     font-family: 'Nunito';
-    /* letter-spacing: 1px; */
 }
 aside > .side > svg {
     padding: 3px 4px;
     transition: all .3s;
     border-radius: 100px;
-    /* background: rgba(0,0,0,.3); */
 }
 aside > .side.active {
     opacity: 1;
 } aside > .side.active > svg {
     padding: 3px 15px;
-    background: rgba(255,255,255,.06);
+    background: var(--inverse-light);
 } 
 
 @media (min-width: 600px) {

@@ -1,13 +1,12 @@
 const app = {
     search_query: '',
     default: async () => {
-        navigator.userAgentData.mobile ? window.location.href =  window.location.href.split('?')[0] : void 0
+        if (window.location.search != '') window.location.href =  window.location.href.split('?')[0] 
         
         window.history.replaceState( {}, 'Рецепты', window.location.href.split('?')[0]);
         document.querySelector('main').classList.add('default')
         var total_recipes = 0
         Object.keys(collections.data).forEach(c => {total_recipes += Object.keys(collections.data[c].recipes).length})
-
         return `
         <div class="center">
             <h1>Рецепты</h1>
@@ -118,8 +117,8 @@ const favourites = {
         recipesHTML = []
         storage.favourites.forEach(id => {id != '' ? recipesHTML.push(generate.min(id)) : void 0})
         return `
-        <h1>Избранное</h1>
         <div class="results" id="results" style="margin: 10px 0 0">
+            <h1>Избранное</h1>
             ${recipesHTML.length ? recipesHTML.join('') : '<h2> Нету сохраненных рецептов</h2>'}
         </div>
         `
@@ -156,8 +155,26 @@ const settings = {
             </label>
             `)
         })
+        var themesHTML = []
+        theme.list.forEach(theme_id => {
+            themesHTML.push(`
+            <div onclick="theme.set('${theme_id}')" class="box" style="--theme-bg: ${theme[theme_id]['text-inverse']}; --theme-text: ${theme[theme_id].text};">
+                <span>${theme[theme_id].name}</span>
+            </div>
+            `)
+        })
         return `
         <h1>Настройки</h1>
+        <div class="setting">
+            <div class="title">
+                <h2>Тема приложения</h2>
+                <span>...Вне зависимости от выбранной стороны, там всегда будут печеньки...</span>
+            </div>
+            <div class="edit boxes">
+                ${themesHTML.join('')}
+            </div>
+        </div>
+
         <div class="setting">
             <div class="title">
                 <h2>Доступные коллекции</h2>
@@ -167,6 +184,7 @@ const settings = {
                 ${collectionsHTML.join('')}
             </div>
         </div>
+
         <div class="setting">
             <div class="title">
                 <h2>Для разработчиков</h2>
@@ -213,3 +231,52 @@ const settings = {
 
 
 
+const theme = {
+    list: ['light', 'dark'],
+    set: (theme_id) => {
+        if (!theme.list.includes(theme_id)) {theme_id = ' dark'}
+        Object.keys(theme[theme_id]).forEach(variable => {  
+            document.documentElement.style.setProperty(`--${variable}`, theme[theme_id][variable]);
+        })
+        document.body.style.opacity = '1'
+        storage.theme = theme_id
+        cookie.save()
+    },
+
+    'light': {
+        'name': 'Светлая тема',
+        
+        'text': '#000',
+        'text-inverse': '#fff',
+        'search-placeholder': '#666',
+        'body': 'linear-gradient(210deg, #ffcdcd, #ffb2dc) #fff',
+
+        'bg-full': 'rgba(255,255,255,.4)',
+        'bg-main': 'rgba(255,255,255,.3)',
+        'bg-light': 'rgba(255,255,255,.2)',
+        'bg-opacity': 'rgba(255,255,255,.1)',
+
+        'inverse-full': 'rgba(0,0,0,.18)',
+        'inverse-main': 'rgba(0,0,0,.16)',
+        'inverse-light': 'rgba(0,0,0,.12)',
+        'inverse-opacity': 'rgba(0,0,0,.06)',
+    },
+    'dark': {
+        'name': 'Темная тема',
+
+        'text': '#fff',
+        'text-inverse': '#000',
+        'search-placeholder': '#aaa',
+        'body': 'linear-gradient(210deg, #140000, #470000) #000',
+
+        'bg-full': 'rgba(0,0,0,.4)',
+        'bg-main': 'rgba(0,0,0,.3)',
+        'bg-light': 'rgba(0,0,0,.2)',
+        'bg-opacity': 'rgba(0,0,0,.1)',
+
+        'inverse-full': 'rgba(255,255,255,.2)',
+        'inverse-main': 'rgba(255,255,255,.16)',
+        'inverse-light': 'rgba(255,255,255,.12)',
+        'inverse-opacity': 'rgba(255,255,255,.08)',
+    },
+}

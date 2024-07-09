@@ -3,10 +3,10 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px;
     transition: background .5s, transform .3s;
 } .recipe_mini > h2 {
     margin-bottom: 8px;
@@ -26,7 +26,7 @@
     letter-spacing: 0px;
     text-wrap: nowrap;
     margin-right: 7px;
-    background: rgba(255,255,255,.09);
+    background: var(--inverse-opacity);
     margin-left: 0;
     padding: 1px 10px;
     padding-left: 0;
@@ -34,7 +34,7 @@
 } 
 
 .recipe_mini:hover {
-    background: rgba(255,255,255,.055);
+    background: var(--inverse-opacity);
     transition: background .15s, transform .3s;
 } .recipe_mini:active {
     transform: scale(.97);
@@ -77,7 +77,7 @@
     font-family: 'Nunito';
     letter-spacing: 0px;
     /* opacity: .9; */
-    background: rgba(255,255,255,.09);
+    background: var(--inverse-opacity);
     margin-left: 0;
     padding: 1px 10px;
     padding-left: 0;
@@ -97,7 +97,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 } .recipe > .info > div > .list > div {
-    background: rgba(255,255,255,.08);
+    background: var(--inverse-opacity);
     display: flex;
     align-items: center;
     margin-right: 7px;
@@ -107,7 +107,7 @@
     font-family: 'Nunito';
     letter-spacing: 0px;
     padding: 4px 10px;
-    background: rgba(255,255,255,.1);
+    background: var(--inverse-opacity);
     border-radius: 14px;
     font-size: 15px;
 } .recipe > .info > div > .list > div > .amount {
@@ -125,7 +125,7 @@
     justify-content: space-between;
 } .recipe > .buttons > .mini {
     display: flex;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     border-radius: 20px;
     margin-left: 10px;
     
@@ -144,8 +144,8 @@
     width: 204px;
     justify-content: start;
     text-align: left;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
 
 } .recipe > .buttons > button:hover {
-    background: rgba(255,255,255,.1);
+    background: var(--inverse-light);
 }

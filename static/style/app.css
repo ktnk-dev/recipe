@@ -23,18 +23,18 @@ main.default > .center > h1 {
     font-size: 70px;
     margin-bottom: 30px;
     padding: 5px 25px;
-    background: rgba(0,0,0,.3);
+    background: var(--bg-main);
     border-radius: 5px;
 } main.default > .center > h2 {
     font-family: 'Nunito';
     position: absolute;
     transform: translateY(45px) translateX(30px) rotate(-3deg);
     text-align: center;
-    background: rgba(255,255,255,.2);
+    background: var(--inverse-main);
     padding: 5px 10px;
     border-radius: 5px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); */
 }
 main.default > .bottom {
     display: flex;
@@ -56,40 +56,41 @@ main.default > .bottom {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 .search > input {
     width: 100%;
-    background: rgba(255,255,255,.06);
+    background: var(--inverse-opacity);
     border: 0;
     border-radius: 100px 0 0 100px ;
     padding: 10px 15px;
     font-size: 17px;
 } .search > input::placeholder {
-    color: #bbb;
+    color: var(--search-placeholder);
 }
 .search > .sb {
     align-items: center;
     display: flex;
     padding: 10px 13px;
     font-size: 17px;
-    background: rgba(255,255,255,.06);
+    background: var(--inverse-opacity);
     border-radius: 0 100px 100px 0;
     cursor: pointer;
     transition: background .2s;
 } .search > .sb > svg {
     margin-left: 10px;
 } .search > .sb:hover {
-    background: rgba(255,255,255,.19);
+    background: var(--inverse-main);
 } .search > .sb:active {
     transition: background .0s;
-    background: rgba(255,255,255,.29);
+    background: var(--inverse-full);
 }
 .results {
     display: flex;
     flex-direction: column;
+    margin-top: 0 !important; 
 } .results > h1 {
-    margin: 20px 0 15px;
+    margin:  0 0px;
 }
 
 
@@ -127,11 +128,46 @@ main.default > .bottom {
     margin-left: 26px;
     margin-bottom: 1px;
 } .setting > .checkboxes > label:hover {
-    background: rgba(255,255,255,.06);
+    background: var(--inverse-opacity);
 
 } .setting > .checkboxes > label:active {
-    background: rgba(255,255,255,.08);
+    background: var(--inverse-light);
     transition: background .05s;
+}
 
+.setting > .boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.setting > .boxes > .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    height: 30px;
+    padding: 10px 20px;
+    background: var(--theme-bg);
+    min-width: fit-content;
+
+    border: solid var(--text) 2px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: opacity .2s, transform .2s;
+    
+} .setting > .boxes > .box > span {
+    color: var(--theme-text);
+} .setting > .boxes:hover > .box:not(:hover) {
+    opacity: .6;
+} .setting > .boxes > .box:hover {
+    transform: scale(1.02);
+} .setting > .boxes > .box:active {
+    transform: scale(.98);
 
 }
+
