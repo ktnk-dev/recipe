@@ -150,7 +150,7 @@ const settings = {
         Object.keys(collections.data).forEach(id => {
             collectionsHTML.push(`
             <label>
-                <input type="checkbox" onchange="setting.collections_exclude_list('${id}', this.checked)" ${collections.exclude.includes(id) ? '' : 'checked'}>
+                <input type="checkbox" onchange="settings.collections_exclude_list('${id}', this.checked)" ${collections.exclude.includes(id) ? '' : 'checked'}>
                 <span>${collections.data[id].name}</span>
             </label>
             `)
